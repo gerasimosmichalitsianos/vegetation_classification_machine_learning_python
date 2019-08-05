@@ -3,9 +3,22 @@
        Satellite imagery products often come with several multispectral bands: Red, Green, Blue, NIR, and
        sometimes, a panchromatic band. Some of these products may come from satellites (orbiters) including 
        the Landsat (i.e. NASA's Landsat 8, launched in 2013), as well as Sentinel II (ESA's Copernicus
-       program). This program is meant to be called on the command-line, in which the user must pass-in
-       1-band (1 image layer or array) georeferenced image filenames (i.e. Geotiffs or JPEG2000, PNG with 
-       "world file," etc.), including
+       program). 
+       
+       This program is meant to be called on the UNIX-like command-line, in which the user must 
+       pass-in 1-band (1 image layer or array) georeferenced image filenames (i.e. Geotiffs or JPEG2000, 
+       PNG with "world file," etc.), including those for the Red, Green, Blue, and NIR bands. These are 
+       required. The user must also pass-in two filename(s) for two shapefiles. One of these shapefiles 
+       will hold points marking trees/forest/vegetation, and the other holidng points for 
+       non-trees/non-vegetation/non-forest. Finally, the user must also pass-in the number of "trees" 
+       (integer) for the number of "trees" used in Python/Sklearn's ExtraTreesClassifier() method
+       (usually between 1 and 15). Optionally, this program allows the user to pass-in a NOData (nan)
+       value (usually -9999 or 0) at the command line. 
+       
+       This program will do the following:
+         (1) 
+       
+       
        
        
        
