@@ -5,8 +5,8 @@ setup(
     scripts=['bin/VegetationClassification.py','bin/ImageClassification.py','bin/Misc.py','bin/TrainingPoints.py','bin/TrainingImagery.py',], 
     license='MIT',
     include_package_data=True, 
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
     entry_points = {
-        'console_scripts': ['VegetationClassification=VegetatationClassification:main'],
+        'console_scripts': ['VegetationClassification=VegetationClassification:main'],
     }
 )
