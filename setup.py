@@ -1,5 +1,4 @@
 from distutils.core import setup
-
 setup(
     name='VegetationClassification',
     version='1.0.0',
@@ -10,5 +9,4 @@ setup(
     entry_points = {
         'console_scripts': ['VegetationClassification=VegetatationClassification:main'],
     }
-	
 )
