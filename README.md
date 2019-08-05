@@ -41,7 +41,6 @@
 
 ###### INSTALLATION
 
-       INSTALLATION:
        $ git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
        $ pip install VegetationClassification/
          or to upgrade:
