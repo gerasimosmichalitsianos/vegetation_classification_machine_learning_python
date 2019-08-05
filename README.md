@@ -46,7 +46,7 @@
          or to upgrade:
        $ pip install VegetationClassification/ --upgrade
        This will create a new command-line tool called "VegetationClassification" 
-       (i.e. /home/username/.local/bin/VegetationClasification)
+       (i.e. /home/username/.local/bin/VegetationClassification)
         
 ###### USAGE MESSAGE
 
