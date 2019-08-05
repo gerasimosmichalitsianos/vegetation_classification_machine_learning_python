@@ -128,12 +128,6 @@
 
        Left: RGB (Red-Green-Blue) composite a 10m resolution Sentinel 2A Scene (Karavomilos and Sami, island of Kefalonia, Greece)
        Right: Python machine-learning forest (woods/vegetation) classification.
-       
-       
-
-###### usage: 
-
-
 
 ###### @author: 
        Gerasimos Michalitsianos
