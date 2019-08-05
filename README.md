@@ -80,11 +80,22 @@
 
 ###### sample outputs:
 
+![Alt text](https://i.imgur.com/usfzp1y.png)
+
+       Left: RGB (Red-Green-Blue) composite a 10m resolution Sentinel 2A Scene (Hong Kong SAR)
+       Right: Python machine-learning forest (woods/vegetation) classification.
+       
+![Alt text](https://i.imgur.com/corJyDg.png)
+
+       Left: RGB (Red-Green-Blue) composite a 30m resolution Landsat 8 Scene (Paliki Peninsula, island of Kefalonia, Greece)
+       Right: Python machine-learning forest (woods/vegetation) classification.
 
 ![Alt text](https://i.imgur.com/JTC2v6L.png)
 
-       Left: RGB (Red-Green-Blue) composite a Sentinel 2A Scene (Karavomilos and Sami, island of Kefalonia, Greece)
+       Left: RGB (Red-Green-Blue) composite a 10m resolution Sentinel 2A Scene (Karavomilos and Sami, island of Kefalonia, Greece)
        Right: Python machine-learning forest (woods/vegetation) classification.
+       
+       
 
 ###### usage: 
 
