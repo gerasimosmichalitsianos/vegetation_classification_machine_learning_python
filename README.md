@@ -117,7 +117,7 @@
         --ntrees 3 
         --nodata 0
     AUTHOR: 
-      Gerasioms A. Michalitsianos
+      Gerasimos A. Michalitsianos
       gerasimosmichalitsianos@gmail.com
       Last Updated: 5 August 2019
 
