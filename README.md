@@ -13,19 +13,23 @@
        non-trees/non-vegetation/non-forest. Finally, the user must also pass-in the number of "trees" 
        (integer) for the number of "trees" used in Python/Sklearn's ExtraTreesClassifier() method
        (usually between 1 and 15). Optionally, this program allows the user to pass-in a NOData (nan)
-       value (usually -9999 or 0) at the command line. 
+       value (usually -9999 or 0) at the command line, as well as a desired output directory.
        
        This program will do the following:
-         (1) 
+         (1) Computes a panchromatic image Geotiff if necessary (if user did not pass this at command-line)
+             using the formula (Red+Green+Blue+NIR)/4.0.
+         (2) Resamples the panchromatic band (usually by downsampling using nearest-neighbor), if necessary, 
+             (i.e. if it was passed at the command-line) to the same resolution and dimensions as the input 
+             multispectral RGB,NIR imagery. 
+         (3) Computes 
+         (3) Reads both vegetation and non-vegetation POINT shapefiles and converts these latitude/longitude
+             projected points into Row/Column space for the input NIR/RGB imagery passed-in. Gathers corresponding
+             pixel values for these rows and 
        
-       
-       
-       
-       
-###### COMMAND-LINE USAGE MESSAGE:
+    
        
         
-###### Sample Outputs
+###### USAGE MESSAGE
 
     NAME:
       VegetationClassification{.py}
