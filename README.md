@@ -38,7 +38,16 @@
              imagery set. 1s are forest (vegetation), 0s are non-forest (i.e. not vegetation). 
              
          For increased accuracy, ensure both input shapefile(s) have more points (i.e. training data).
-       
+
+###### INSTALLATION
+
+   INSTALLATION:
+     $ git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
+     $ pip install VegetationClassification/
+       or to upgrade:
+     $ pip install VegetationClassification/ --upgrade
+     This will create a new command-line tool called "VegetationClassification" 
+       (i.e. /home/username/.local/bin/VegetationClasification)
         
 ###### USAGE MESSAGE
 
