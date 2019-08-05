@@ -77,7 +77,7 @@
             Display this help usage message
           { --outdir, -o    } 
             Output directory path (optional)
-          { --ntrees, --numtrees, --numbertrees, -n }
+          { --ntrees, --numtrees, --numbertrees }
             Number of trees used in ExtraTreesClassifier (optional, default is 3)
           { --panchromatic, -p  }
             Panchromatic Image Filename (optional)
