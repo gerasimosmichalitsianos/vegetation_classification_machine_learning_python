@@ -51,7 +51,7 @@ def usage(message=None):
             Display this help usage message
           { --outdir, -o    } 
             Output directory path (optional)
-          { --ntrees, --numtrees, --numbertrees, -n }
+          { --ntrees, --numtrees, --numbertrees }
             Number of trees used in ExtraTreesClassifier (optional, default is 3)
           { --panchromatic, -p  }
             Panchromatic Image Filename (optional)
@@ -183,7 +183,7 @@ def main():
       BackgroundPointsShapefile    = Argument
     elif Option in ('-t','--targets','--trees','--vegetation'):
       TargetPointsShapefile        = Argument
-    elif Option in ('-n','--ntrees','--numtrees','--numbertrees'):
+    elif Option in ('--ntrees','--numtrees','--numbertrees'):
       NumberTreesForClassification = Argument
     elif Option in ('-i','--ignore','--nodata'):
       NoDataString                 = Argument
