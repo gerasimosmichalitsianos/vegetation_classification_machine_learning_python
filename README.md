@@ -70,7 +70,8 @@
       To use this program, run it at command-line with the 
       following possible arguments:
 
-      $ python VegetationClassification.py
+      $ VegetationClassification
+      
          Command-Line Options:
           { --help, --h, -h }
             Display this help usage message
@@ -106,7 +107,7 @@
       $ blue=T34SDH_20180830T093029_B02_10m.jp2
       $ NIR=T34SDH_20180830T093029_B08_10m.jp2
 
-      $ python VegetationClassification.py 
+      $ VegetationClassification
         --red $red 
         --green $green 
         --blue $blue 
