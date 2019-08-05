@@ -21,12 +21,23 @@
          (2) Resamples the panchromatic band (usually by downsampling using nearest-neighbor), if necessary, 
              (i.e. if it was passed at the command-line) to the same resolution and dimensions as the input 
              multispectral RGB,NIR imagery. 
-         (3) Computes 
-         (3) Reads both vegetation and non-vegetation POINT shapefiles and converts these latitude/longitude
+         (3) Computes a supporting set of georeferenced (GDAL) raster satellite imagery files, including 
+             Normalized Difference Vegetation Index (NDVI), Soil-Adjusted NDVI (SAVI) for L = 0.1,0.2,...1.0 
+             (see https://wiki.landscapetoolbox.org/doku.php/remote_sensing_methods:soil-adjusted_vegetation_index),
+             as well as "background" imagery (Gaussian-filtered) for the Red,Green,Blue,NIR,Panchromatic, and 
+             NDVI band and/or band combinations. Also creates an RGB Geotiff mosaic. 
+         (4) Reads both vegetation and non-vegetation POINT shapefiles and converts these latitude/longitude
              projected points into Row/Column space for the input NIR/RGB imagery passed-in. Gathers corresponding
-             pixel values for these rows and 
-       
-    
+             pixel values from all imagery (RGB,NIR,Panchromatic, "Backround" imagery, NDVI, SAVI) and writes all
+             pixel values to a CSV file. Values of 1 mark "trees/vegetation" and 0s mark "non-trees/non-vegetation" 
+             in the right-most column of this CSV ("Label"). Each row in this CSV represents one POINT from one 
+             of the TWO shapefile(s) passed-in at command-line. This CSV hence contains "Training Data" 
+             used for vegetation classification.
+         (5) Uses CSV from (5), as well as Python machine-learning tools from Sklearn and Pandas, to 
+             write a PNG and Geotiff containing a final forest (woods/trees) classification for the 
+             imagery set. 1s are forest (vegetation), 0s are non-forest (i.e. not vegetation). 
+             
+         For increased accuracy, ensure both input shapefile(s) have more points (i.e. training data).
        
         
 ###### USAGE MESSAGE
