@@ -1,7 +1,7 @@
 ###### GENERAL DESCRIPTION: VEGETATION AND FOREST CLASSIFICATION WITH MACHINE LEARNING AND PYTHON
 
        Satellite imagery products often come with several multispectral bands: Red, Green, Blue, NIR, and
-       sometimes, a panchromatic band. Some of these products may come from satellites (orbiters) including 
+       sometimes, a high-resolution panchromatic band. Some of these products may come from satellites (orbiters) including 
        the Landsat (i.e. NASA's Landsat 8, launched in 2013), as well as Sentinel II (ESA's Copernicus
        program). 
        
