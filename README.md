@@ -50,10 +50,11 @@
     
 ###### INSTALLATION
 
-       $ git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
-       $ pip install VegetationClassification/
+       git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
+       pip install VegetationClassification/
          or to upgrade:
-       $ pip install VegetationClassification/ --upgrade
+       pip install VegetationClassification/ --upgrade
+       
        This will create a new command-line tool called "VegetationClassification" 
        (i.e. /home/username/.local/bin/VegetationClassification)
         
