@@ -38,7 +38,16 @@
              imagery set. 1s are forest (vegetation), 0s are non-forest (i.e. not vegetation). 
              
          For increased accuracy, ensure both input shapefile(s) have more points (i.e. training data).
-
+         
+###### FURTHER EXPLANATION OF METHODOLOGY
+ 
+       See see a simplifed version of this code, visit this site:
+       https://gerasimosmichalitsianos.wordpress.com/2019/05/26/classification-of-forest-vegetation-in-satellite-imagery-using-machine-learning-and-python/
+       
+       This example blog entry shows how the code works, assuming all "training imagery" (NDVI,SAVI,...)
+       has already been created, along with the CSV containing the "training data" of 
+       all relevant pixel values and tree/non-tree label (1 or 0 in the final "Label" column).
+    
 ###### INSTALLATION
 
        $ git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
