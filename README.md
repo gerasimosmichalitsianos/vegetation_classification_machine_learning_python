@@ -38,6 +38,10 @@
              imagery set. 1s are forest (vegetation), 0s are non-forest (i.e. not vegetation). 
              
          For increased accuracy, ensure both input shapefile(s) have more points (i.e. training data).
+
+###### VERSION
+
+       Supports Python 2.7.x. May run with Python 3.x with minor modifications.
          
 ###### FURTHER EXPLANATION OF METHODOLOGY
  
