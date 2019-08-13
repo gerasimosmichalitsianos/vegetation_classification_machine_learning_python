@@ -39,7 +39,7 @@
              
          For increased accuracy, ensure both input shapefile(s) have more points (i.e. training data).
 
-###### VERSION
+###### PYTHON VERSION
 
        Supports Python 2.7.x. May run with Python 3.x with minor modifications.
          
