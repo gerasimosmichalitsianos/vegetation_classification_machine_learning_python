@@ -341,9 +341,7 @@ def RandomForestClassification( ImgDict,CSV,OutDir,NTrees ):
   # to form final image of classifiaction of vegetation 
   # ---------------------------------------------------
   FinalForestVegetationClassification = np.concatenate( ImageStrips,axis=0 )
-
   locs = np.where( FinalForestVegetationClassification == 1 )
-  print 'number of tree pixels: ' , locs[0].shape[0]
 
   # Write final classification to Geotiff
   # -------------------------------------
