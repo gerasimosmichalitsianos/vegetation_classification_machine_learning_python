@@ -71,7 +71,7 @@
     $ VegetationClassification
       
     Command-Line Options:
-      { --usage, -u }
+      { --help, -h }
         Display this help usage message
       { --ntrees, --numtrees, --numbertrees }
         Number of trees used in ExtraTreesClassifier (optional, default is 3)
