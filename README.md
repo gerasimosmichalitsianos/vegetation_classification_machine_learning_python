@@ -98,14 +98,14 @@
     $ cd VegetationClassification/
     $ docker build -t vegetationclassify .
     
-    $ red=/home/gmichali/HONG_KONG_SENTINEL/T49QHE_20190125T030011_B04_10m_subset.jp2
-    $ green=/home/gmichali/HONG_KONG_SENTINEL/T49QHE_20190125T030011_B03_10m_subset.jp2 
-    $ blue=/home/gmichali/HONG_KONG_SENTINEL/T49QHE_20190125T030011_B02_10m_subset.jp2 
-    $ NIR=/home/gmichali/HONG_KONG_SENTINEL/T49QHE_20190125T030011_B08_10m_subset.jp2
+    $ DIR=/home/gmichali/HONG_KONG_SENTINEL
+    $ red=$DIR/T49QHE_20190125T030011_B04_10m_subset.jp2
+    $ green=$DIR/T49QHE_20190125T030011_B03_10m_subset.jp2 
+    $ blue=$DIR/T49QHE_20190125T030011_B02_10m_subset.jp2 
+    $ NIR=$DIR/T49QHE_20190125T030011_B08_10m_subset.jp2
     
-    $ treeshapefile=/home/gmichali/HONG_KONG_SENTINEL/hk_trees.shp
-    $ nontreeshapefile=/home/gmichali/HONG_KONG_SENTINEL/hk_not_trees.shp
-    $ DIR=/home/gmichali/HONG_KONG_SENTINEL/
+    $ treeshapefile=$DIR/hk_trees.shp
+    $ nontreeshapefile=$DIR/hk_not_trees.shp
 
     $ docker run -v $DIR:$DIR vegetationclassify --red $red \
       --green $green \
