@@ -128,28 +128,6 @@
     (Soil-Adjusted NDVI) for 10 different thresholds, as well as a Panchromaic image 
     (if needed). The final output is a Geotiff with 1s and 0s, whereas 1s mark 
     trees/woods and 0s mark non-trees (non-forest/woods).
-    
-###### EXAMPLE USAGE:
-
-    This example shows how to use this program on the 
-    Linux command-line (typically a BASH shell).
-
-    Using Sentinel 2A imagery:
-      
-      $ red=T34SDH_20180830T093029_B04_10m.jp2
-      $ green=T34SDH_20180830T093029_B03_10m.jp2
-      $ blue=T34SDH_20180830T093029_B02_10m.jp2
-      $ NIR=T34SDH_20180830T093029_B08_10m.jp2
-
-      $ VegetationClassification
-        --red $red 
-        --green $green 
-        --blue $blue 
-        --nir $NIR
-        --trees trees.shp 
-        --nontrees not_trees.shp 
-        --ntrees 3 
-        --nodata 0
 
 ###### SAMPLE OUTPUTS:
 
