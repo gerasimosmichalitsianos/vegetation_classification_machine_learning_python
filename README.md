@@ -54,25 +54,16 @@
     
 ###### INSTALLATION
 
+    First check out the code and change into the directory:
+    
     $ git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
-        
-###### FUNCTIONALITY
-
-    It is common for satellite imagery to include bands for the Red, Green, Blue, 
-    and Near-Infrared (NIR) bands, among others. Each of these would correspond to 
-    a frequency and/or reflectance (or irradiance) channel for a particular satellite 
-    (i.e. Landsat, MODIS, Sentinel, and so on). These bands can be used to compute 
-    various combinations that would help to classify vegetation in the satellite 
-    imagery (i.e. Normalized Difference Vegetation Index, NDVI).
-
-    This command-line program uses Python and machine-learning to classify a set of 
-    satellite imagery into a vegetation and non-vegetation. To this end, this program 
-    computes various parameters, Normalized Difference Vegetation Index (NDVI), SAVI 
-    (Soil-Adjusted NDVI) for 10 different thresholds, as well as a Panchromaic image 
-    (if needed). The final output is a Geotiff with 1s and 0s, whereas 1s mark 
-    trees/woods and 0s mark non-trees (non-forest/woods).
-
-###### USAGE
+    $ cd VegetationClassification/
+    
+    Then build the image using Dockerfile:
+    
+    $ docker build -t vegetationclassify .
+    
+###### GENERAL USAGE
 
     To use this program, run it at command-line with the 
     following possible arguments:
@@ -82,8 +73,6 @@
     Command-Line Options:
       { --help, --h, -h }
         Display this help usage message
-      { --outdir, -o    } 
-        Output directory path (optional)
       { --ntrees, --numtrees, --numbertrees }
         Number of trees used in ExtraTreesClassifier (optional, default is 3)
       { --panchromatic, -p  }
@@ -102,6 +91,43 @@
         Shapefile (.shp extension) for points marking trees/vegetation (woods) (required)
       { -i, --ignore, --nodata                         }
         Imagery pixel value to ignore. NoData value. Usually 0 or -9999 (optional).
+    
+###### EXAMPLE USAGE
+
+    $ git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
+    $ cd VegetationClassification/
+    $ docker build -t vegetationclassify .
+    
+    $ red=/home/gmichali/HONG_KONG_SENTINEL/T49QHE_20190125T030011_B04_10m_subset.jp2
+    $ green=/home/gmichali/HONG_KONG_SENTINEL/T49QHE_20190125T030011_B03_10m_subset.jp2 
+    $ blue=/home/gmichali/HONG_KONG_SENTINEL/T49QHE_20190125T030011_B02_10m_subset.jp2 
+    $ NIR=/home/gmichali/HONG_KONG_SENTINEL/T49QHE_20190125T030011_B08_10m_subset.jp2
+    
+    $ treeshapefile=/home/gmichali/HONG_KONG_SENTINEL/hk_trees.shp
+    $ nontreeshapefile=/home/gmichali/HONG_KONG_SENTINEL/hk_not_trees.shp
+    $ DIR=/home/gmichali/HONG_KONG_SENTINEL/
+
+    $ docker run -v $DIR:$DIR vegetationclassify --red $red \
+      --green $green \
+      --blue $blue --nir $NIR \
+      --trees $treeshapefile \
+      --nontrees $nontreeshapefile --ntrees 3 --nodata 0
+
+###### FUNCTIONALITY
+
+    It is common for satellite imagery to include bands for the Red, Green, Blue, 
+    and Near-Infrared (NIR) bands, among others. Each of these would correspond to 
+    a frequency and/or reflectance (or irradiance) channel for a particular satellite 
+    (i.e. Landsat, MODIS, Sentinel, and so on). These bands can be used to compute 
+    various combinations that would help to classify vegetation in the satellite 
+    imagery (i.e. Normalized Difference Vegetation Index, NDVI).
+
+    This command-line program uses Python and machine-learning to classify a set of 
+    satellite imagery into a vegetation and non-vegetation. To this end, this program 
+    computes various parameters, Normalized Difference Vegetation Index (NDVI), SAVI 
+    (Soil-Adjusted NDVI) for 10 different thresholds, as well as a Panchromaic image 
+    (if needed). The final output is a Geotiff with 1s and 0s, whereas 1s mark 
+    trees/woods and 0s mark non-trees (non-forest/woods).
     
 ###### EXAMPLE USAGE:
 
