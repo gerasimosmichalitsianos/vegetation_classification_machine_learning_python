@@ -54,7 +54,7 @@ def PrepareTrainingDataFromCSV( TrainingPixelValueDataCSV ):
   # a Python pandas dataframe 
   # ---------------------------------------------------------------
   TrainingDataframe = pandas.read_csv(TrainingPixelValueDataCSV, header=0)
-  
+
   # Randomize columns in dataframe, then 
   # rename "Label" column as "tree_binary" 
   # i.e. woods/non-woods (forest/non-forest)
@@ -67,7 +67,7 @@ def PrepareTrainingDataFromCSV( TrainingPixelValueDataCSV ):
   #   (2) Final column (tree/non-tree) that is 1 or 0
   # Return these two dataframes.
   # ---------------------------------------------------------
-  TrainingSpectralValuesDataframe = TrainingDataframe.ix[:,0:22]
+  TrainingSpectralValuesDataframe = TrainingDataframe.iloc[:,0:22]#ix[:,0:22]
   TrainingTreeNonTreeDataframe = TrainingDataframe['tree_binary']
   return ( TrainingSpectralValuesDataframe,TrainingTreeNonTreeDataframe )
 
@@ -341,7 +341,9 @@ def RandomForestClassification( ImgDict,CSV,OutDir,NTrees ):
   # to form final image of classifiaction of vegetation 
   # ---------------------------------------------------
   FinalForestVegetationClassification = np.concatenate( ImageStrips,axis=0 )
+
   locs = np.where( FinalForestVegetationClassification == 1 )
+  print( 'number of tree pixels: ' , str(locs[0].shape[0]))
 
   # Write final classification to Geotiff
   # -------------------------------------

@@ -26,7 +26,7 @@ def usage(message=None):
 
   print('''
     NAME:
-      VegetationClassification{.py}
+      VegetationClassification
     DESCRIPTION
       It is common for satellite imagery to include bands for the Red, Green, Blue, 
       and Near-Infrared (NIR) bands, among others. Each of these would correspond to 
@@ -45,13 +45,13 @@ def usage(message=None):
       To use this program, run it at command-line with the 
       following possible arguments:
 
-      $ python VegetationClassification.py
+      $ python3 VegetationClassification.py
          Command-Line Options:
           { --help, --h, -h }
             Display this help usage message
           { --outdir, -o    } 
             Output directory path (optional)
-          { --ntrees, --numtrees, --numbertrees }
+          { --ntrees, --numtrees, --numbertrees, -n }
             Number of trees used in ExtraTreesClassifier (optional, default is 3)
           { --panchromatic, -p  }
             Panchromatic Image Filename (optional)
@@ -93,13 +93,13 @@ def usage(message=None):
     AUTHOR: 
       Gerasioms A. Michalitsianos
       gerasimosmichalitsianos@gmail.com
-      Last Updated: 2 August 2019
+      Last Updated: 12 January 2021 
   ''')
   sys.exit(1)
 
 def main(): 
-  
-  # 
+ 
+  # ---------------------------------------------------------------------
   # define empty strings to initialize for the 
   # following required input flag arguments:
   # 
@@ -114,9 +114,7 @@ def main():
   #       or non-trees (non-woods/forest)
   #   (9) Name of POINTS shapefile that defines "trees" (woods/forest)
   #   (10) NoData value 
-  #
   # ----------------------------------------------------------------------
-
   args = [
     'help',
     'ntrees=','numtrees=','numbertrees=', 
@@ -135,7 +133,6 @@ def main():
   # Red,Green,Blue,NIR, and optional Panchromatic 
   # channels as empty strings
   # ----------------------------------------------------
-
   RedImageFileName             = ''
   GreenImageFileName           = ''
   BlueImageFileName            = ''
@@ -147,8 +144,6 @@ def main():
   # of trees to use for random-forest classification, 
   # a NoData number string, and NoData value 
   # ------------------------------------------------------------
-
-  OutputDirectory              = ''
   TargetPointsShapefile        = ''
   BackgroundPointsShapefile    = ''
   NumberTreesForClassification = 3
@@ -157,18 +152,16 @@ def main():
 
   try:
     Options,Arguments = getopt.getopt(
-      sys.argv[1:],'h:o:p:g:b:r:n:z:t:n:i:',args )
+      sys.argv[1:],'h:p:g:b:r:n:z:t:n:i:',args )
   except getopt.GetoptError:
     usage()
 
+  # ----------------------------------
   # iterate through command-line args. 
   # ----------------------------------
-
   for Option,Argument in Options:
     if Option in   ('-h','--h','--help'):
       usage()
-    elif Option in ('-o','--outdir'):
-      OutputDirectory = Argument   
     elif Option in ('-p','--pan','--panchromatic'):
       PanchromaticImageFileName    = Argument
     elif Option in ('-g','--green'):
@@ -183,7 +176,7 @@ def main():
       BackgroundPointsShapefile    = Argument
     elif Option in ('-t','--targets','--trees','--vegetation'):
       TargetPointsShapefile        = Argument
-    elif Option in ('--ntrees','--numtrees','--numbertrees'):
+    elif Option in ('-n','--ntrees','--numtrees','--numbertrees'):
       NumberTreesForClassification = Argument
     elif Option in ('-i','--ignore','--nodata'):
       NoDataString                 = Argument
@@ -226,26 +219,12 @@ def main():
     ' (i.e. non-trees). Use -b or other listed flags. ')
     usage()
 
-  if OutputDirectory == '':
-    # This block is entered if the user did NOT pass 
-    # in a path for an output directory. We make a 
-    # default output folder here in the current
-    # working directory.
-    # ----------------------------------------------
-    OutputDirectory = os.path.join(
-      os.getcwd(),'random_forest_classification_outputs')
-    if not os.path.isdir( OutputDirectory ): 
-      os.mkdir(OutputDirectory)
-  else: 
-    # This block is entered if the user DID pass-in an output 
-    # directory on the command line. Here, we make the directory
-    # if it does not exist. If we can't ... exit. 
-    # ----------------------------------------------------------
-    try:
-      if not os.path.isdir( OutputDirectory ): 
-        os.mkdir(OutputDirectory)
-    except:
-      usage('  \n    Unable to create path: '+OutputDirectory+'. Exiting ... ')
+  # --------------------------------------------------
+  # define output directory as same as input directory
+  # --------------------------------------------------
+  OutputDirectory = os.path.dirname( RedImageFileName )
+  if not os.path.isdir( OutputDirectory):
+    usage('  \n  Not an existing directory: '+OutputDirectory )
 
   # ---------------------------------------------------
   # make sure user at least passed-in filename strings
@@ -271,7 +250,6 @@ def main():
   # ----------------------------------------------------------------
   # open up red,green,blue,nir image files ... store their arrays
   # ----------------------------------------------------------------
-
   DatasetRed   = gdal.Open( RedImageFileName   )
   DatasetNIR   = gdal.Open( NIRImageFileName   )
   DatasetBlue  = gdal.Open( BlueImageFileName  )
@@ -386,7 +364,6 @@ def main():
   # to be passed-in at the command-line to the output directory
   # with file-names Red.tif,Green.tif,Blue.tif,NIR.tif
   # -------------------------------------------------------------
-
   OutFileNameNIR    = os.path.join( 
     OutputDirectory, 'NIR.tif' )
   OutFileNameRed    = os.path.join( 
@@ -448,7 +425,6 @@ def main():
   # strings for imagery that will be used in final 
   # forest/vegetation image classification
   # --------------------------------------------------------
-
   ClassificationImageryDict.update(CreateImageryBackground(
     [FilePointerRed,FilePointerGreen,FilePointerBlue,FilePointerNIR,FilePointerPan,FilePointerNDVI],
     OutputDirectory,
@@ -457,7 +433,6 @@ def main():
 
   # Create output dataset  holding RGB bands 
   # ----------------------------------------
-
   ImageFileNameRGB = CreateImageRGB(
     ClassificationImageryDict['red'],
     ClassificationImageryDict['green'],
@@ -480,7 +455,6 @@ def main():
   #        Background NDVI,Panchromatic band, ... )
   #   (4) Output directory string
   # ------------------------------------------------------------------
-
   Classification_CSV_FileName = CreateTrainingPointsCSV(
     BackgroundPointsShapefile,
     TargetPointsShapefile,
@@ -495,7 +469,6 @@ def main():
   # use CSV to write out an image classification to the 
   # output directory
   # ---------------------------------------------------
-
   RandomForestClassification(
     ClassificationImageryDict,
     Classification_CSV_FileName,

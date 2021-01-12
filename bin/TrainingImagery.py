@@ -232,13 +232,19 @@ def CreateImageryNDVI( FileArrayPointers,OutputDirectory,ReferenceDataset ):
   #   SAVI = [ ( NIR - red ) / ( NIR + red + L ) ] * (1+L)
   # ----------------------------------------------------------
 
-  L = 0.1
-  while(L<1.0):
+  Threshes = [ 0.1 ,0.2, 0.3 , 0.4 , 0.5, 0.6, 0.7, 0.8, 0.9, 1.0   ]
+  Labels   = [ '01','02','03','04' ,'05','06','07', '08','09', '10' ]
+
+  #L = 0.1
+  #while(L<1.0):
+  for L,Label in zip( Threshes,Labels ):
+
     with warn.catch_warnings():
       warn.filterwarnings('ignore',category=RuntimeWarning)
       savi = ((FilePointerNIR - FilePointerRed )/(FilePointerNIR + FilePointerRed + L )) * (1+L)
 
-    thresholdStringSAVI = '%02d'%int(str(L).replace('.',''))
+    #thresholdStringSAVI = '%02d'%int(str(L).replace('.',''))
+    thresholdStringSAVI  = Label
     outnameSAVI = os.path.join( OutputDirectory , 'SAVI_' +thresholdStringSAVI+'.tif')
     if os.path.isfile(outnameSAVI): os.remove(outnameSAVI)
     WriteGeotiff( ReferenceDataset , outnameSAVI , savi )
