@@ -56,7 +56,7 @@
 
     First check out the code and change into the directory:
     
-    $ git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
+    $ git clone https://github.com/gerasimosmichalitsianos/vegetation_classification
     $ cd VegetationClassification/
     
     Then build the image using Dockerfile:
