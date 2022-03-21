@@ -57,7 +57,7 @@
     First check out the code and change into the directory:
     
     $ git clone https://github.com/gerasimosmichalitsianos/vegetation_classification
-    $ cd VegetationClassification/
+    $ cd vegetation_classification/
     
     Then build the image using Dockerfile:
     
@@ -94,8 +94,8 @@
     
 ###### EXAMPLE USAGE
 
-    $ git clone https://github.com/gerasimosmichalitsianos/VegetationClassification
-    $ cd VegetationClassification/
+    $ git clone https://github.com/gerasimosmichalitsianos/vegetation_classification
+    $ cd vegetation_classification/
     $ docker build -t vegetationclassify .
     
     $ DIR=/home/gmichali/HONG_KONG_SENTINEL
