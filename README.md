@@ -56,7 +56,7 @@
 
     First check out the code and change into the directory:
     
-    $ git clone https://github.com/gerasimosmichalitsianos/vegetation_classification
+    $ git clone https://github.com/gerasimosmichalitsianos/vegetation_classification_machine_learning_python
     $ cd vegetation_classification/
     
     Then build the image using Dockerfile:
@@ -94,7 +94,8 @@
     
 ###### EXAMPLE USAGE
 
-    $ git clone https://github.com/gerasimosmichalitsianos/vegetation_classification
+    $ git clone https://github.com/gerasimosmichalitsianos/vegetation_classification_machine_learning_python
+
     $ cd vegetation_classification/
     $ docker build -t vegetationclassify .
     
